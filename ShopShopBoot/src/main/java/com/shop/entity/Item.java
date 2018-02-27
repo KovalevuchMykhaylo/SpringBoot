@@ -12,7 +12,7 @@ import com.shop.entity.User;
 
 @Entity
 @Table(name = "Items")
-public class Items extends BaseEntity {
+public class Item extends BaseEntity {
 	
 	@Column(name = "title", length = 100, unique = true)
 	private String title;
@@ -26,6 +26,9 @@ public class Items extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
+	
+	@ManyToOne
+	private Category category;
 
 	public String getTitle() {
 		return title;
@@ -57,6 +60,14 @@ public class Items extends BaseEntity {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	@Override

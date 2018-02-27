@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.shop.entity.Items;
+import com.shop.entity.Item;
 
 @Controller
 public class BaseController {
@@ -22,13 +22,13 @@ public class BaseController {
 
 	@GetMapping("/info")
 	public String userInfo(Model model) {
-		List<Items> items = new ArrayList<>();
+		List<Item> item = new ArrayList<>();
 		for(int i = 0; i < 10; i++) {
-			Items fuck = new Items();
+			Item fuck = new Item();
 			fuck.setTitle("Bui" + i);
-			items.add(fuck);
+			item.add(fuck);
 		}
-		model.addAttribute("be", items);
+		model.addAttribute("be", item);
 		return "base/info";
 	}
 	

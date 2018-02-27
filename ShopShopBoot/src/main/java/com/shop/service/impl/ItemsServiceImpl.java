@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.shop.entity.Items;
+import com.shop.entity.Item;
 import com.shop.repository.ItemsRepository;
 import com.shop.service.ItemsService;
 
@@ -16,17 +16,17 @@ public class ItemsServiceImpl implements ItemsService{
 	private ItemsRepository repository;
 	
 	@Override
-	public void save(Items items) {
-		repository.save(items);
+	public void save(Item item) {
+		repository.save(item);
 	}
 
 	@Override
-	public Items findOne(Integer id) {
+	public Item findOne(Integer id) {
 		return repository.findOne(id);
 	}
 
 	@Override
-	public List<Items> findAll() {
+	public List<Item> findAll() {
 		return repository.findAll();
 	}
 

@@ -46,7 +46,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 		private Role role;
 
 		@OneToMany(mappedBy = "user")
-		private List<Items> items = new ArrayList<>();
+		private List<Item> item = new ArrayList<>();
 
 		public String getLogin() {
 			return login;
@@ -104,12 +104,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 			this.role = role;
 		}
 
-		public List<Items> getItems() {
-			return items;
+		public List<Item> getItems() {
+			return item;
 		}
 
-		public void setItems(List<Items> items) {
-			this.items = items;
+		public void setItems(List<Item> item) {
+			this.item = item;
 		}
 
 		public String getPassConfirm() {
@@ -123,7 +123,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 		@Override
 		public String toString() {
 			return "User [login=" + login + ", password=" + password + ", email=" + email + ", firstName=" + firstName
-					+ ", lastName=" + lastName + ", age=" + age + ", role=" + role + ", items=" + items + "]";
+					+ ", lastName=" + lastName + ", age=" + age + ", role=" + role + ", items=" + item + "]";
 		}
 
 		@Override

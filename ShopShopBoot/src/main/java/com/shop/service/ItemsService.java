@@ -2,15 +2,15 @@ package com.shop.service;
 
 import java.util.List;
 
-import com.shop.entity.Items;
+import com.shop.entity.Item;
 
 public interface ItemsService {
 	
-	void save(Items items);
+	void save(Item item);
 	
-	Items findOne(Integer id);
+	Item findOne(Integer id);
 	
-	List<Items> findAll();
+	List<Item> findAll();
 
 	void delete(Integer id);
 }

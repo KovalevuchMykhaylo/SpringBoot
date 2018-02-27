@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.shop.entity.Items;
+import com.shop.entity.Item;
+import com.shop.service.CategoryService;
 import com.shop.service.ItemsService;
 
 @Controller
@@ -24,13 +25,17 @@ public class ItemController {
 	@Autowired
 	private ItemsService itemsService;
 	
+	@Autowired
+	private CategoryService categoryService; 
+	
 	@ModelAttribute("item")
-	public Items getForm() {
-		return new Items();
+	public Item getForm() {
+		return new Item();
 	}
 	
 	@GetMapping
 	public String show(Model model) {
+		model.addAttribute("categories", categoryService.findAll());
 		return "admin/itemForm";
 	}
 	
@@ -41,11 +46,11 @@ public class ItemController {
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("item")Items items, SessionStatus status) {
-		if(items.getCreatedAt() == null) {
-			items.setCreatedAt(new Date());
+	public String save(@ModelAttribute("item")Item item, SessionStatus status) {
+		if(item.getCreatedAt() == null) {
+			item.setCreatedAt(new Date());
 		}
-		itemsService.save(items);
+		itemsService.save(item);
 		status.setComplete();
 		return"redirect:/user/itemView";
 	}
