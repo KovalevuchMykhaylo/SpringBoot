@@ -7,8 +7,9 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -47,6 +48,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 		@OneToMany(mappedBy = "user")
 		private List<Item> item = new ArrayList<>();
+		
+		@ManyToOne(fetch=FetchType.LAZY)
+		private ShopingCart shopingCart;
 
 		public String getLogin() {
 			return login;
@@ -118,6 +122,22 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 		public void setPassConfirm(String passConfirm) {
 			this.passConfirm = passConfirm;
+		}
+
+		public List<Item> getItem() {
+			return item;
+		}
+
+		public void setItem(List<Item> item) {
+			this.item = item;
+		}
+
+		public ShopingCart getShopingCart() {
+			return shopingCart;
+		}
+
+		public void setShopingCart(ShopingCart shopingCart) {
+			this.shopingCart = shopingCart;
 		}
 
 		@Override

@@ -11,10 +11,6 @@
 	    		<div class="col-md-2 col-xs-2"></div>
 	    		<div class="col-md-2 col-xs-2"></div>
 	    	</c:when>
-<%-- 	    	<c:otherwise> --%>
-<%-- 				<div class="col-md-2 col-xs-2"><a class="btn btn-success" href="/admin/category/add/noss/${categories.id}">Add</a></div> --%>
-<%-- 				<div class="col-md-2 col-xs-2"><a class="btn btn-success" href="/admin/category/add/nosd/${categories.id}">Add</a></div> --%>
-<%-- 	    	</c:otherwise> --%>
 	    </c:choose>
 		<div class="col-md-2 col-xs-2"><a class="btn btn-warning" href="/admin/category/update/${categories.id}">update</a></div>
 		<div class="col-md-2 col-xs-2"><a class="btn btn-danger" href="/admin/category/delete/${categories.id}">delete</a></div>

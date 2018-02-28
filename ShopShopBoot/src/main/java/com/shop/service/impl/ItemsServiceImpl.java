@@ -3,6 +3,8 @@ package com.shop.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.shop.entity.Item;
@@ -33,6 +35,23 @@ public class ItemsServiceImpl implements ItemsService{
 	@Override
 	public void delete(Integer id) {
 		repository.delete(id);
+	}
+	
+	@Override
+	public int findCount(int id) {
+		Integer count = repository.findCount(id);
+		if(count==null)return 0;
+		return count;
+	}
+
+	@Override
+	public Page<Item> findAll(Pageable pageable) {
+		return repository.findAll(pageable);
+	}
+
+	@Override
+	public List<Item> findByUserId(int userId) {
+		return repository.findByUserId(userId);
 	}
 
 }

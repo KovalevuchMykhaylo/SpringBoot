@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <nav class="navbar navbar-inverse">
@@ -25,6 +27,11 @@
 						<li style="margin-top: 15px;color=red"><a href="#">Logout</a></li>
 					</form:form>
 				</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
+				<ul class="nav navbar-nav navbar-right">
+			               <li><a href="/shopping" class="btn btn-primary cart">Корзина <span class="badge">${quantity.count}</span></a></li>
+			            </ul>
+			</sec:authorize>
 			</ul>
 		</div>
 	</div>

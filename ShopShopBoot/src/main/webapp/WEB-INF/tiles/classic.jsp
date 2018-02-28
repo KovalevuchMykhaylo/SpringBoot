@@ -6,9 +6,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><tiles:getAsString name="title"/></title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<!--  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+<!--   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+   
+   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/chosen.min.css">
+   <link rel="stylesheet" href="/resources/css/style.css">
+
+   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/light-bootstrap-dashboard.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/js/chosen.jquery.min.js"></script>
+<!--   <sec:csrfMetaTags/> -->
+    <script type="text/javascript" language="javascript">
+
+        var client = rest.chain(csrf, {
+            token: $("meta[name='_csrf']").attr("content"),
+            name: $("meta[name='_csrf_header']").attr("content")
+        });
+
+    </script>
+
+    <script>
+        $(function () {
+            $('select').chosen();
+        });
+    </script>
   <style>
     .navbar {
       margin-bottom: 0;

@@ -11,5 +11,15 @@ public interface UserService {
 	void saveAndEncode(User user);
 	
 	User findByLogin(String login);
+	
+	void addToShoppingCart(int userId, int itemId);
+
+	void removeToShoppingCart(int userId, int itemId);
+	
+	void removeAllToShoppingCart(int userId);
+
+	int createNewUser();
+	
+	void sendMail(String content, String email, String mailBody);
 
 }
