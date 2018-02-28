@@ -39,7 +39,7 @@ public class IndexController {
 			response.addCookie(new Cookie("userId", String.valueOf(id)));
 		}
 		model.addAttribute("page", itemservice.findAll(pageable));
-		return "base/home";
+		return "base/index";
 	}
 
 	@GetMapping("/info")

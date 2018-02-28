@@ -35,8 +35,8 @@
 						Sort <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
-						<custom:sort innerHtml="Name asc" paramValue="name" />
-						<custom:sort innerHtml="Name desc" paramValue="name,desc" />
+						<custom:sort innerHtml="Name asc" paramValue="title" />
+						<custom:sort innerHtml="Name desc" paramValue="title,desc" />
 					</ul>
 				</div>
 			</div>

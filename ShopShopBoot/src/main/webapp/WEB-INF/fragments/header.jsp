@@ -21,16 +21,14 @@
 					<li><a href="/register"> Register</a></li>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
+			       <li><a href="/shopping">Корзина <span class="badge">${quantity.count}</span></a></li>
+			       <li>
 					<form:form action="${pageContext.request.contextPath}/logout"
 						method="POST" id="logOutId">
 <%-- 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
 						<li style="margin-top: 15px;color=red"><a href="#">Logout</a></li>
 					</form:form>
-				</sec:authorize>
-				<sec:authorize access="isAuthenticated()">
-				<ul class="nav navbar-nav navbar-right">
-			               <li><a href="/shopping" class="btn btn-primary cart">Корзина <span class="badge">${quantity.count}</span></a></li>
-			            </ul>
+					</li>
 			</sec:authorize>
 			</ul>
 		</div>
