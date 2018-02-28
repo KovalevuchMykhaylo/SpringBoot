@@ -11,7 +11,7 @@ public interface ItemsRepository extends JpaRepository<Item, Integer> {
 	
 	@Query("SELECT sc.count FROM User u JOIN u.shopingCart sc WHERE u.id=?1")
 	Integer findCount(int id);
-
-	List<Item> findByUserId(int userId);
+	
+	List<Item> findAllByUserId(int userId);
 
 }

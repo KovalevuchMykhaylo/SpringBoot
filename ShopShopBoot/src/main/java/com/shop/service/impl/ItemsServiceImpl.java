@@ -50,8 +50,8 @@ public class ItemsServiceImpl implements ItemsService{
 	}
 
 	@Override
-	public List<Item> findByUserId(int userId) {
-		return repository.findByUserId(userId);
+	public List<Item> findAllByUserId(int userId) {
+		return repository.findAllByUserId(userId);
 	}
 
 }

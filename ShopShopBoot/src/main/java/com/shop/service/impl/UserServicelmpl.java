@@ -98,8 +98,8 @@ public class UserServicelmpl implements UserService, UserDetailsService{
 			cart = shopingCartRepository.save(new ShopingCart());
 			user.setShopingCart(cart);
 		}
-		Item modelServo = itemRepository.findOne(itemId);
-		cart.add(modelServo);
+		Item item = itemRepository.findOne(itemId);
+		cart.add(item);
 	}
 	
 	@Override

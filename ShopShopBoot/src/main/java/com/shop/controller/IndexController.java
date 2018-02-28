@@ -63,12 +63,13 @@ public class IndexController {
 	@GetMapping("/shopping")
 	public String shopping(Model model, @CookieValue(defaultValue = "0", name = "userId") int userId) {
 		BigDecimal totalPrice = new BigDecimal(0); 
-		for (Item item : itemservice.findByUserId(userId)) { 
-		totalPrice = totalPrice.add(item.getPrice()); 
-		model.addAttribute("totalPrice", totalPrice);
-		model.addAttribute("items", itemservice.findByUserId(userId));
-			System.out.println(totalPrice);
+		List<Item> items = itemservice.findAllByUserId(userId);
+		for (Item item : items) { 
+			totalPrice = totalPrice.add(item.getPrice()); 
 		}
+		model.addAttribute("totalPrice", totalPrice);
+		model.addAttribute("items", items);
+		System.out.println(totalPrice);
 		return "user/shopping";
 	}
 	

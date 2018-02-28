@@ -21,5 +21,5 @@ public interface ItemsService {
 
 	int findCount(int userId);
 
-	List<Item> findByUserId(int userId);
+	List<Item> findAllByUserId(int userId);
 }
