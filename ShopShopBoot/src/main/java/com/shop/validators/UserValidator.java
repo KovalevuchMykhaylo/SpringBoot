@@ -16,8 +16,6 @@ public class UserValidator implements Validator{
     private final static Pattern REGEMAIL = Pattern.compile(CLIENT_EMAIL);
     //	check password 6-18 char
     private final static Pattern REGPASS = Pattern.compile(CLIENT_PASSWORD);
-    //    Check name mast be 3-16 chars. Must not contain any special characters
-    private final static Pattern REGNAME = Pattern.compile(CLIENT_NAME);
 
     private final UserService userService;
 

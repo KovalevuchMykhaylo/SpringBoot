@@ -74,7 +74,6 @@ public class UserServicelmpl implements UserService, UserDetailsService{
 	
 	@PostConstruct
 	public void createAmin() {
-		System.out.println("PostConstruct");
 		if(userRepository.findByLogin("admin")==null) {
 			User user = new User();
 			user.setLogin("admin");

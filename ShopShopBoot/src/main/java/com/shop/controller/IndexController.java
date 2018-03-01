@@ -11,17 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shop.entity.Item;
 import com.shop.service.ItemsService;
 import com.shop.service.UserService;
+import com.shop.util.UserUtil;
 
 @Controller
 public class IndexController {
@@ -33,11 +34,13 @@ public class IndexController {
 	private UserService userService;
 
 	@GetMapping("/")
-	public String showHome(Model model, @CookieValue(defaultValue="0", name="userId") int id, HttpServletResponse response, @PageableDefault Pageable pageable) {
-		if(id==0){
-			id = userService.createNewUser();
-			response.addCookie(new Cookie("userId", String.valueOf(id)));
-		}
+	public String index(Model model, @CookieValue(defaultValue="0", name="userId") int id, HttpServletResponse response, @PageableDefault Pageable pageable) {
+		id = UserUtil.getSignedUpUserId();
+		response.addCookie(new Cookie("userId", String.valueOf(id)));
+//		if(id==0){
+//			id = userService.createNewUser();
+//			response.addCookie(new Cookie("userId", String.valueOf(id)));
+//		}
 		model.addAttribute("page", itemservice.findAll(pageable));
 		return "base/index";
 	}
@@ -54,12 +57,12 @@ public class IndexController {
 		return "base/info";
 	}
 	
-//	@GetMapping("/login")
-	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping("/login")
 	public String login() {
 		return "base/login";
 	}
 	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/shopping")
 	public String shopping(Model model, @CookieValue(defaultValue = "0", name = "userId") int userId) {
 		BigDecimal totalPrice = new BigDecimal(0); 
@@ -69,22 +72,24 @@ public class IndexController {
 		}
 		model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("items", items);
-		System.out.println(totalPrice);
 		return "user/shopping";
 	}
 	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/buy/{itemId}")
 	public String buy(@CookieValue(defaultValue="0", name="userId") int userId, @PathVariable int itemId){
 		userService.addToShoppingCart(userId, itemId);
 		return "redirect:/";
 	}
 	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/del/{itemId}")
 	public String remove(@CookieValue(defaultValue = "0", name = "userId") int userId, @PathVariable int itemId) {
 		userService.removeToShoppingCart(userId, itemId);
 		return "redirect:/shopping";
 	}
 	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/iNeedIt")
 	public String iNeedIt(@CookieValue(defaultValue = "0", name = "userId") int userId, Principal principal) {
 		userService.sendMail("ModelServo", principal.getName(), "You buy shit!!!");

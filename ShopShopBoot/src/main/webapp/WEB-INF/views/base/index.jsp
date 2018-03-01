@@ -9,19 +9,19 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="/WEB-INF/custom.tld" prefix="custom"%>
-<label style="color: red"><h3>To buy you need to register!!!</h3></label>
 <div class="row">
-	<div class="col-md-2 col-xs-12">
-	</div>
+	<sec:authorize access="!isAuthenticated()">
+		<h3 style="color: red">To buy you need to register!!!</h3>
+	</sec:authorize>
+	<div class="col-md-2 col-xs-12"></div>
 	<div class="col-md-8 col-xs-12 parent">
 		<c:forEach items="${page.content}" var="item">
 			<div>
-<%-- 				<custom:hiddenInputs excludeParams="name, price" /> --%>
+				<%-- 				<custom:hiddenInputs excludeParams="name, price" /> --%>
 				<p>Name: ${item.title}</p>
-				<p>Price: ${item.price} грн</p>
+				<p>Price: ${item.price} $</p>
 				<sec:authorize access="isAuthenticated()">
-					<a href="/buy/${item.id}" class="btn btn-primary">В
-						корзину!</a>
+					<a href="/buy/${item.id}" class="btn btn-primary">В корзину!</a>
 				</sec:authorize>
 			</div>
 		</c:forEach>
