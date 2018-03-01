@@ -15,5 +15,11 @@ public interface CategoryService {
 	Category findOne(int id);
 	
 	Category findOne(String name);
+	
+	List<Category> findAllWhereParentNull();
+	
+	List<Category> findAllByParentNotNullAndHaveChildsTrue();
+	
+	List<Category> findAllWhereHaveChildsFalse();
 
 }

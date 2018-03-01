@@ -54,4 +54,19 @@ public class CategoryServiceImplmpl implements CategoryService{
 		return categoryRepository.findByName(name);
 	}
 
+	@Override
+	public List<Category> findAllWhereParentNull() {
+		return categoryRepository.findAllByParentNull();
+	}
+
+	@Override
+	public List<Category> findAllWhereHaveChildsFalse() {
+		return categoryRepository.findAllByHaveChildsFalse();
+	}
+
+	@Override
+	public List<Category> findAllByParentNotNullAndHaveChildsTrue() {
+		return categoryRepository.findAllByParentNotNullAndHaveChildsTrue();
+	}
+
 }

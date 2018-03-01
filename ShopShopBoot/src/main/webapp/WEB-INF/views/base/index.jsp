@@ -13,8 +13,7 @@
 	<sec:authorize access="!isAuthenticated()">
 		<h3 style="color: red">To buy you need to register!!!</h3>
 	</sec:authorize>
-	<div class="col-md-2 col-xs-12"></div>
-	<div class="col-md-8 col-xs-12 parent">
+	<div class="col-md-10 col-xs-12 parent">
 		<c:forEach items="${page.content}" var="item">
 			<div>
 				<%-- 				<custom:hiddenInputs excludeParams="name, price" /> --%>

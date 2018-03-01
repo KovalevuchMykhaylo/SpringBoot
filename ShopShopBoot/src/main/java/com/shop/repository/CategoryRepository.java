@@ -21,5 +21,11 @@ public interface CategoryRepository extends JpaRepository<Category, Integer>, Jp
 	void validHaveChilds();
 	
 	Category findByName(String name);
+	
+	List<Category> findAllByParentNull();
+	
+	List<Category> findAllByParentNotNullAndHaveChildsTrue();
+	
+	List<Category> findAllByHaveChildsFalse();
 
 }
