@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.shop.entity.Item;
+import com.shop.service.BrandService;
 import com.shop.service.CategoryService;
+import com.shop.service.CountryService;
 import com.shop.service.ItemsService;
 
 @Controller
@@ -28,6 +30,12 @@ public class ItemController {
 	@Autowired
 	private CategoryService categoryService; 
 	
+	@Autowired
+	private BrandService brandService;
+	
+	@Autowired
+	private CountryService countryService;
+	
 	@ModelAttribute("item")
 	public Item getForm() {
 		return new Item();
@@ -36,6 +44,8 @@ public class ItemController {
 	@GetMapping
 	public String show(Model model) {
 		model.addAttribute("categories", categoryService.findAll());
+		model.addAttribute("countrys", countryService.findAll());
+		model.addAttribute("brands", brandService.findAll());
 		return "admin/itemForm";
 	}
 	

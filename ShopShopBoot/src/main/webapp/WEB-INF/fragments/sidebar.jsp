@@ -17,6 +17,12 @@
 		<p>
 			<a href="/admin/category">Category</a>
 		</p>
+		<p>
+			<a href="/admin/country">Country</a>
+		</p>
+		<p>
+			<a href="/admin/brand">Brand</a>
+		</p>
 	</sec:authorize>
 	<sec:authorize
 		access="isAuthenticated() and hasAnyRole('ROLE_USER, ROLE_ADMIN')">
@@ -27,6 +33,7 @@
 	<p>
 		<a href="/student">Student</a>
 	</p>
+	<sec:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
 	<p>Parent null</p>
 	<c:forEach items="${sideBarCategotyParentNull}" var="category">
 		<p>${category.name}</p>
@@ -40,4 +47,5 @@
 	<c:forEach items="${sideBarCategotyChildFalse}" var="category">
 		<p>${category.name}</p>
 	</c:forEach>
+	</sec:authorize>
 </div>

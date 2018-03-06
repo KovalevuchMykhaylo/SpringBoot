@@ -36,6 +36,9 @@ public class Item extends BaseEntity {
 	@ManyToOne
 	private Country countryProducer;
 	
+	@ManyToOne
+	private Brand brand;
+	
 	@ManyToMany(mappedBy="items")
 	private List<ShopingCart> shopingCarts = new ArrayList<>();
 
@@ -93,6 +96,14 @@ public class Item extends BaseEntity {
 
 	public void setShopingCarts(List<ShopingCart> shopingCarts) {
 		this.shopingCarts = shopingCarts;
+	}
+
+	public Brand getBrand() {
+		return brand;
+	}
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
 	}
 
 	@Override

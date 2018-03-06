@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.shop.entity.Item;
+import com.shop.entity.User;
 import com.shop.service.ItemsService;
 import com.shop.service.UserService;
 import com.shop.util.UserUtil;
@@ -35,7 +36,10 @@ public class IndexController {
 
 	@GetMapping("/")
 	public String index(Model model, @CookieValue(defaultValue="0", name="userId") int id, HttpServletResponse response, @PageableDefault Pageable pageable) {
-		id = UserUtil.getSignedUpUserId();
+		User user = UserUtil.getSignedUpUser();
+		if(user!=null) {
+			id = user.getId();
+		}
 		response.addCookie(new Cookie("userId", String.valueOf(id)));
 //		if(id==0){
 //			id = userService.createNewUser();

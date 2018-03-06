@@ -40,6 +40,18 @@
 				</div>
 			</div>
 			<div class="form-group">
+    			<label for="countryProducer" class="col-sm-4 control-label">Country Producer</label>
+    			<div class="col-sm-4">
+      				<form:select class="form-control" path="countryProducer" items="${countrys}" itemValue="id" itemLabel="name"/>
+    			</div>
+  			</div>
+  			<div class="form-group">
+    			<label for="brand" class="col-sm-4 control-label">Brand</label>
+    			<div class="col-sm-4">
+      				<form:select class="form-control" path="brand" items="${brands}" itemValue="id" itemLabel="name"/>
+    			</div>
+  			</div>		
+			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-4">
 					<button type="submit" class="btn btn-primary">Create</button>
 				</div>
