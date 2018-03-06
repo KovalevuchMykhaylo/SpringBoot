@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.shop.dto.filters.SimpleFilter;
+import com.shop.dto.projections.NameAndIdProjection;
 import com.shop.entity.Country;
 
 public interface CountryService {
@@ -23,4 +24,6 @@ public interface CountryService {
 	Country findByName(String name);
 
 	Country findByShortName(String shortName);
+	
+	List<NameAndIdProjection> findProjections();
 }

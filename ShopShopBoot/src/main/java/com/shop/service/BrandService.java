@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.shop.dto.filters.SimpleFilter;
+import com.shop.dto.projections.NameAndIdProjection;
 import com.shop.entity.Brand;
 
 public interface BrandService {
@@ -21,4 +22,6 @@ public interface BrandService {
 	Brand findByName(String name);
 	
 	void delete(Integer id);
+	
+	List<NameAndIdProjection> findProjections();
 }

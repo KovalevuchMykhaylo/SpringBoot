@@ -44,8 +44,8 @@ public class ItemController {
 	@GetMapping
 	public String show(Model model) {
 		model.addAttribute("categories", categoryService.findAll());
-		model.addAttribute("countrys", countryService.findAll());
-		model.addAttribute("brands", brandService.findAll());
+		model.addAttribute("countrys", countryService.findProjections());
+		model.addAttribute("brands", brandService.findProjections());
 		return "admin/itemForm";
 	}
 	
@@ -71,5 +71,4 @@ public class ItemController {
 		return "redirect:/user/itemView";
 	}
 	
-
 }

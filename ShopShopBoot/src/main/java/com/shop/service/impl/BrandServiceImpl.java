@@ -9,6 +9,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.shop.dto.filters.SimpleFilter;
+import com.shop.dto.projections.NameAndIdProjection;
 import com.shop.entity.Brand;
 import com.shop.repository.BrandRepository;
 import com.shop.service.BrandService;
@@ -55,6 +56,11 @@ public class BrandServiceImpl implements BrandService{
 				return null;
 			return cb.like(cb.lower(root.get("name")), filter.getSearch().toLowerCase() + "%");
 		};
+	}
+
+	@Override
+	public List<NameAndIdProjection> findProjections() {
+		return brandRepository.findProjections();
 	}
 
 }
