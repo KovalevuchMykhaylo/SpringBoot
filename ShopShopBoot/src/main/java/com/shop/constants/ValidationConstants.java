@@ -4,6 +4,8 @@ public final class ValidationConstants {
 
     public static final String NAME_ALREADY_EXISTS = "Name already exists";
 
+    public static final String SHORT_NAME_ALREADY_EXISTS = "Short name already exists";
+
     public static final String CANT_BE_EMPTY = "Cant be empty";
 
     public static final String CONFIRM_PASSWORD_CANT_BE_EMPTY = "Confirm password can't be empty";

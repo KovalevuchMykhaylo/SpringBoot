@@ -33,6 +33,9 @@ public class Item extends BaseEntity {
 	@ManyToOne
 	private Category category;
 	
+	@ManyToOne
+	private Country countryProducer;
+	
 	@ManyToMany(mappedBy="items")
 	private List<ShopingCart> shopingCarts = new ArrayList<>();
 
@@ -74,6 +77,14 @@ public class Item extends BaseEntity {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public Country getCountryProducer() {
+		return countryProducer;
+	}
+
+	public void setCountryProducer(Country countryProducer) {
+		this.countryProducer = countryProducer;
 	}
 
 	public List<ShopingCart> getShopingCarts() {
