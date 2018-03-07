@@ -3,17 +3,25 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-<div class="row">
+<div class="row" id="myProfile">
 	<div class="col-md-12">
 		<div class="row">
 			<div class="col-md-6">
 				<img src="data:image/jpg;base64, ${imgFromDb}" class="img-rounded" width="300"/>
 			</div>
 			<div class="col-md-6">
-				<p>Login ${user.login}</p>
-				<p>Email ${user.email}</p>
-				<p>Name ${user.firstName}</p>
-				<p>Second Name ${user.lastName}</p>
+				<div class="col-md-4">
+					<p>Login: </p>
+					<p>Email: </p>
+					<p>Name: </p>
+					<p>Second Name: </p>
+				</div>
+				<div class="col-md-8">
+					<p>${user.login}</p>
+					<p>${user.email}</p>
+					<p>${user.firstName}</p>
+					<p>${user.lastName}</p>
+				</div>
 			</div>
 		</div>
 	</div>

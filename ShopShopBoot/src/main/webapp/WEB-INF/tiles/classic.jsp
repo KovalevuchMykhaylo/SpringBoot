@@ -13,6 +13,7 @@
    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"/>
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/chosen.min.css">
    <link rel="stylesheet" href="/resources/css/style.css">
+   <link rel="stylesheet" href="/resources/css/profile.css">
 
    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
@@ -51,7 +52,9 @@
       background-color: black;
       color: white;
       padding: 15px;
+      margin-top: 100px;
     }
+    
   </style>
 
 </head>
@@ -69,8 +72,8 @@
     		</div>
     	</div>
 <!--     </div> -->
-	
-	<tiles:insertAttribute name="footer"/>
-
+	<div style="padding-top: 70px">
+		<tiles:insertAttribute name="footer"/>
+	</div>
 </body>
 </html>
