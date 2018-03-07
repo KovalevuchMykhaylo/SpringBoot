@@ -5,10 +5,12 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -43,6 +45,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 		private String lastName;
 		private int age;
 
+		@Column(name = "file_name")
+		private String fileName;
+
+		// BLOB ≈ 64KB,
+		// MEDIUMBLOB ≈ 16MB(16777215),
+		// LONGBLOB ≈ 4GB
+		@Lob
+		@Basic(fetch = FetchType.LAZY)
+		@Column(name = "file_data", columnDefinition = "MEDIUMBLOB")
+		private byte[] fileData;
+		
 		@Enumerated
 		private Role role;
 
@@ -175,7 +188,22 @@ import org.springframework.security.core.userdetails.UserDetails;
 		public boolean isEnabled() {
 			return true;
 		}
-		
+
+		public String getFileName() {
+			return fileName;
+		}
+
+		public void setFileName(String fileName) {
+			this.fileName = fileName;
+		}
+
+		public byte[] getFileData() {
+			return fileData;
+		}
+
+		public void setFileData(byte[] fileData) {
+			this.fileData = fileData;
+		}
 		
 	
 }
