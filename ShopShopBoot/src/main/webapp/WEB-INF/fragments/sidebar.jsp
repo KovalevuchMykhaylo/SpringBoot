@@ -23,11 +23,8 @@
 		<p>
 			<a href="/admin/brand">Brand</a>
 		</p>
-	</sec:authorize>
-	<sec:authorize
-		access="isAuthenticated() and hasAnyRole('ROLE_USER, ROLE_ADMIN')">
 		<p>
-			<a href="/user/itemView">Show Items</a>
+			<a href="/admin/itemView">Show Items</a>
 		</p>
 	</sec:authorize>
 	<p>

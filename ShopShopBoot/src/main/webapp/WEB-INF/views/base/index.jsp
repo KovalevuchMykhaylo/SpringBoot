@@ -11,11 +11,11 @@
 <%@ taglib uri="/WEB-INF/custom.tld" prefix="custom"%>
 <div class="row">
 	<sec:authorize access="!isAuthenticated()">
-		<h3 style="color: red">To buy you need to register!!!</h3>
+		<h3 id="blink">To buy you need to register!!!</h3>
 	</sec:authorize>
 	<div class="col-md-10 col-xs-10 parent">
 		<c:forEach items="${page.content}" var="item">
-			<div>
+			<div  id="itemHover">
 				<%-- 				<custom:hiddenInputs excludeParams="name, price" /> --%>
 				<p>Name: ${item.title}</p>
 				<p>Price: ${item.price} $</p>
@@ -25,7 +25,7 @@
 			</div>
 		</c:forEach>
 	</div>
-	<div class="col-md-2 col-xs-2">
+	<div class="col-md-2 col-xs-2 form-maggin">
 		<div class="row">
 			<div class="col-md-6 col-xs-6 text-center">
 				<div class="dropdown">

@@ -101,5 +101,10 @@ public class IndexController {
 		return "user/success";
 	}
 	
+	@GetMapping("/about")
+	public String about() {
+		return "base/about";
+	}
+	
 }
 

@@ -62,13 +62,13 @@ public class ItemController {
 		}
 		itemsService.save(item);
 		status.setComplete();
-		return"redirect:/user/itemView";
+		return"redirect:/admin/itemView";
 	}
 	
 	@GetMapping("/delete/{itemId}")
 	public String delete(@PathVariable("itemId") Integer id) {
 		itemsService.delete(id);
-		return "redirect:/user/itemView";
+		return "redirect:/admin/itemView";
 	}
 	
 }

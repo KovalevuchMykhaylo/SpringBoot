@@ -7,7 +7,7 @@
 		<form:form class="form-horizontal" action="/register" method="POST" modelAttribute="user">
   			<div class="form-group"><h2 class="col-sm-offset-5 col-sm-2">Registration</h2></div>
   			<div class="form-group">
-                <label for="email" style="color:red;text-align:left;"><form:errors path="email"/></label>
+                <label for="email" id="blink"><form:errors path="email"/></label>
             </div>
 			<div class="form-group">
     			<label for="email" class="col-sm-4 control-label">Email</label>
@@ -16,7 +16,7 @@
     			</div>
   			</div>
   			<div class="form-group">
-                <label for="login" style="color:red;text-align:left;"><form:errors path="login"/></label>
+                <label for="login" id="blink"><form:errors path="login"/></label>
             </div>
   			<div class="form-group">
     			<label for="login" class="col-sm-4 control-label">Login</label>
@@ -25,7 +25,7 @@
     			</div>
   			</div>
   			<div class="form-group">
-                <label for="password" style="color:red;text-align:left;"><form:errors path="password"/></label>
+                <label for="password" id="blink"><form:errors path="password"/></label>
             </div>
 			<div class="form-group">
     			<label for="password" class="col-sm-4 control-label">Password</label>

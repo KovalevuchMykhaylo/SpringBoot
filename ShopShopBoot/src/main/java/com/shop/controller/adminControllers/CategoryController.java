@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.shop.entity.Category;
 import com.shop.service.CategoryService;
@@ -65,6 +66,12 @@ public class CategoryController {
 			return show(model);
 		}
 		categoryService.save(category);
+		return "redirect:/admin/category";
+	}
+	
+	@RequestMapping("/cancel")
+	public String cancel(SessionStatus status) {
+		status.setComplete();
 		return "redirect:/admin/category";
 	}
 }

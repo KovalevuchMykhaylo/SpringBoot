@@ -6,8 +6,12 @@ import javax.transaction.Transactional;
 
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import com.shop.dto.filters.SimpleFilter;
 import com.shop.entity.Category;
 import com.shop.repository.CategoryRepository;
 import com.shop.service.CategoryService;
@@ -67,6 +71,19 @@ public class CategoryServiceImplmpl implements CategoryService{
 	@Override
 	public List<Category> findAllByParentNotNullAndHaveChildsTrue() {
 		return categoryRepository.findAllByParentNotNullAndHaveChildsTrue();
+	}
+
+	@Override
+	public Page<Category> findPage(SimpleFilter filter, Pageable pageable) {
+		return categoryRepository.findAll(findByNameLike(filter), pageable);
+	}
+	
+	private Specification<Category> findByNameLike(SimpleFilter filter) {
+		return (root, query, cb) -> {
+			if (filter.getSearch().isEmpty())
+				return null;
+			return cb.like(cb.lower(root.get("name")), filter.getSearch().toLowerCase() + "%");
+		};
 	}
 
 }

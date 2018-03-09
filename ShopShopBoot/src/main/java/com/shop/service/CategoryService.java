@@ -2,6 +2,10 @@ package com.shop.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import com.shop.dto.filters.SimpleFilter;
 import com.shop.entity.Category;
 
 public interface CategoryService {
@@ -21,5 +25,7 @@ public interface CategoryService {
 	List<Category> findAllByParentNotNullAndHaveChildsTrue();
 	
 	List<Category> findAllWhereHaveChildsFalse();
+	
+	Page<Category> findPage(SimpleFilter filter, Pageable pageable);
 
 }

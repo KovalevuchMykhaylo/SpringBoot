@@ -9,7 +9,42 @@
 	box-sizing: border-box;
 	border: 2px solid lightgray;
 	padding: 10px;
+	margin: 10px;
 }
 .navbar-default .navbar-nav>li>.cart{
 	color:white;
+}
+
+.form-maggin{
+	margin-top: 10px;
+}
+
+.divSlaider{
+	width: 80%;
+	margin-top: 10px;
+}
+
+#blink {
+    -webkit-animation: blink 2s linear infinite;
+    animation: blink 2s linear infinite;
+    font-weight: bold;
+    color: #F00;
+    text-align: center;
+}
+
+@-webkit-keyframes blink {
+    0% { color: #F00; }
+    50% { color: #FBB; }
+    100% { color: #F00; }
+}
+
+@keyframes blink {
+    0% { color: #F00; }
+    50% { color: #FBB; }
+    100% { color: #F00; }
+}
+
+#itemHover:hover {
+	color: #ffb300;
+	font-weight: bold;
 }

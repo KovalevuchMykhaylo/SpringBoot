@@ -4,12 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="row">
 	<c:if test="${param.fail}">
-		<div class="col-sm-12 col-xs-12 text-center">
-			<h2>Fail to autorize</h2>
+		<div class="col-sm-12 col-xs-12">
+			<h2 id="blink">Fail to autorize</h2>
 		</div>
 	</c:if>
 	<div class="col-sm-12 col-xs-12">
-		<form:form class="form-horizontal" action="${pageContext.request.contextPath}/login" method="POST">
+		<form:form class="form-horizontal form-maggin" action="${pageContext.request.contextPath}/login" method="POST">
 			<div class="form-group">
 				<label for="login" class="col-sm-4 control-label">Login</label>
 				<div class="col-sm-4">
@@ -34,7 +34,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-4">
-					<button type="submit" class="btn btn-default">Sign in</button>
+					<button type="submit" class="btn btn-primary">Sign in</button>
 				</div>
 			</div>
 		</form:form>

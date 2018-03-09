@@ -6,7 +6,7 @@
 		<form:form class="form-horizontal" action="/admin/itemForm"
 			method="POST" modelAttribute="item">
 			<div class="form-group">
-				<h2 class="col-sm-offset-3 col-sm-5">Admin Item Form</h2>
+				<h2 class="col-sm-offset-3 col-sm-5">Admin Item Form <a href="${pageContext.request.contextPath}/admin/itemView" class="btn btn-primary">View</a></h2>
 			</div>
 			<div class="form-group">
 				<label for="category" class="col-sm-4 control-label">Category</label>

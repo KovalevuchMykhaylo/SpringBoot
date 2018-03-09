@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="/WEB-INF/custom.tld" prefix="custom"%>
 
-<div class="row">
+<div class="row form-maggin">
 	<div class="col-md-3 col-xs-3">
 		<form:form class="form-inline" action="/admin/country" method="GET" modelAttribute="filter">
 			<custom:hiddenInputs excludeParams="search"/>
