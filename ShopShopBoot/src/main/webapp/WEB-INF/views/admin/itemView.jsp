@@ -4,11 +4,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="/WEB-INF/custom.tld" prefix="custom"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <div class="row">
 	<div class="col-sm-12 col-xs-12">
-		<div class="col-sm-3 col-xs-3"><h2>Item view page <a href="${pageContext.request.contextPath}/admin/itemForm" class="btn btn-primary">Add</a></h2></div>
-		<div class="col-sm-3 col-xs-3"><custom:pageable page="${page}" cell="<li></li>" container="<ul class='pagination'></ul>" /></div>
-		<div class="col-sm-3 col-xs-3">
+		<div class="col-md-3 col-xs-3"><h2>Item view<a href="${pageContext.request.contextPath}/admin/itemForm" class="btn btn-primary">Add</a></h2></div>
+		<div class="col-md-3 col-xs-3"><custom:pageable page="${page}" cell="<li></li>" container="<ul class='pagination'></ul>" /></div>
+		<div class="col-md-2 col-xs-2">
 			<div class="row" style="margin-bottom: 20px; margin-top: 20px">
 				<div class="col-md-6 col-xs-6 text-center">
 					<div class="dropdown">
@@ -26,6 +27,16 @@
 					<custom:size posibleSizes="1,2,5,10" size="${page.size}" />
 				</div>
 			</div>
+		</div>
+		<div class="col-md-4 col-xs-4">
+			<form:form class="form-inline form-maggin" action="/admin/itemView" method="GET" modelAttribute="filter">
+			<custom:hiddenInputs excludeParams="search"/>
+			<div class="form-group">
+				<form:input path="search" class="form-control" placeholder="Search"/>
+			</div>
+			<button type="submit" class="btn btn-primary">Ok</button>
+			<a href  = "/admin/itemView/cancel" class="btn btn-primary" >Cancel</a>
+		</form:form>
 		</div>
 	</div>
 </div>

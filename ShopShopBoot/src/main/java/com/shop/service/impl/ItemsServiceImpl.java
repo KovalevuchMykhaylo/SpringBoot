@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import com.shop.dto.filters.SimpleFilter;
 import com.shop.entity.Item;
 import com.shop.repository.ItemsRepository;
 import com.shop.service.ItemsService;
@@ -45,13 +47,26 @@ public class ItemsServiceImpl implements ItemsService{
 	}
 
 	@Override
-	public Page<Item> findAll(Pageable pageable) {
-		return repository.findAll(pageable);
+	public Page<Item> findPage(SimpleFilter filter, Pageable pageable) {
+		return repository.findAll(findByNameLike(filter), pageable);
+	}
+	
+	private Specification<Item> findByNameLike(SimpleFilter filter) {
+		return (root, query, cb) -> {
+			if (filter.getSearch().isEmpty())
+				return null;
+			return cb.like(cb.lower(root.get("title")), filter.getSearch().toLowerCase() + "%");
+		};
 	}
 
 	@Override
 	public List<Item> findAllByUserId(int userId) {
 		return repository.findAllByUserId(userId);
+	}
+
+	@Override
+	public Page<Item> findAll(Pageable pageable) {
+		return repository.findAll(pageable);
 	}
 
 }
